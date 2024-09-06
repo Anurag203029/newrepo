@@ -53,6 +53,14 @@ const userSchema = new mongoose.Schema(
 			type: String,
 			default: "",
 		},
+		otp: {
+			type: Number,
+			default: "",
+		},
+		isOtpVerified: {
+			type: Boolean,
+			default: false,
+		},
 		likedPosts: [
 			{
 				type: mongoose.Schema.Types.ObjectId,

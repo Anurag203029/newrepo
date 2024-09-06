@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import XSvg from "../../../components/svgs/X";
 
@@ -13,6 +14,7 @@ const LoginPage = () => {
 		username: "",
 		password: "",
 	});
+	const navigate = useNavigate();
 	const queryClient = useQueryClient();
 
 	const {
@@ -23,7 +25,7 @@ const LoginPage = () => {
 	} = useMutation({
 		mutationFn: async ({ username, password }) => {
 			try {
-				const res = await fetch("/api/auth/login", {
+				const res = await fetch("https://twitter-cln.onrender.com/api/auth/login", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
@@ -32,9 +34,16 @@ const LoginPage = () => {
 				});
 
 				const data = await res.json();
-
+                
 				if (!res.ok) {
 					throw new Error(data.error || "Something went wrong");
+				}
+				if(res.status == 400) {
+					alert(data.error);
+				}
+				if(res.status == 200) {
+					alert('login Successfully!!');
+                    navigate('/')
 				}
 			} catch (error) {
 				throw new Error(error);
