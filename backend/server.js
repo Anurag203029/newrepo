@@ -20,7 +20,7 @@ cloudinary.config({
 
 const app = express();
 app.use(express.json({limit:"5mb"}));
-const port =10000 ;
+const port =5000|| 3000 ;
 // console.log(process.env.);
 
 app.use(express.urlencoded({ extended: true })); // to parse form data(urlencoded)

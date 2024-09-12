@@ -2,12 +2,15 @@ import { useState } from "react";
 
 import Posts from "../../components/common/Posts";
 import CreatePost from "./CreatePost";
+import Sidebar from "../../components/common/Sidebar";
+import RightPanel from "../../components/common/RightPanel";
 
 const HomePage = () => {
 	const [feedType, setFeedType] = useState("forYou");
 
 	return (
 		<>
+		{/* <Sidebar /> */}
 			<div className='flex-[4_4_0] mr-auto border-r border-gray-700 min-h-screen'>
 				{/* Header */}
 				<div className='flex w-full border-b border-gray-700'>
@@ -39,6 +42,7 @@ const HomePage = () => {
 				{/* POSTS */}
 				<Posts feedType={feedType} />
 			</div>
+			{/* <RightPanel /> */}
 		</>
 	);
 };
